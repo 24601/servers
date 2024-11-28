@@ -10,7 +10,8 @@
     "start": "node build/index.js"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^0.6.0"
+    "@modelcontextprotocol/sdk": "^0.6.0",
+    "jira.js": "^2.16.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.24",

@@ -7,15 +7,18 @@ import {
   ListToolsRequestSchema,
   CallToolRequestSchema,
   ErrorCode,
-  McpError,
-  RequestHandler
+  McpError
 } from "@modelcontextprotocol/sdk/types.js";
 import { Version3Client } from "jira.js";
 import { JiraIssue, CreateIssueArgs, UpdateIssueArgs, SearchIssuesArgs } from "./types.js";
+import { ResourceHandlers } from "./resourceHandlers.js";
+import { ToolHandlers } from "./toolHandlers.js";
 
 class JiraServer {
   private server: Server;
   private jiraClient: Version3Client;
+  private resourceHandlers: ResourceHandlers;
+  private toolHandlers: ToolHandlers;
 
   constructor() {
     // Validate environment variables
@@ -49,6 +52,9 @@ class JiraServer {
       }
     });
 
+    this.resourceHandlers = new ResourceHandlers(this.server, this.jiraClient);
+    this.toolHandlers = new ToolHandlers(this.server, this.jiraClient);
+
     this.setupHandlers();
     this.setupErrorHandling();
   }
@@ -65,16 +71,8 @@ class JiraServer {
   }
 
   private setupHandlers(): void {
-    this.setupResourceHandlers();
-    this.setupToolHandlers();
-  }
-
-  private setupResourceHandlers(): void {
-    // Implementation moved to resourceHandlers.ts
-  }
-
-  private setupToolHandlers(): void {
-    // Implementation moved to toolHandlers.ts
+    this.resourceHandlers.setupResourceHandlers();
+    this.toolHandlers.setupToolHandlers();
   }
 
   async run(): Promise<void> {

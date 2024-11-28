@@ -20,9 +20,22 @@ export interface ToolContent {
 }
 
 export interface ResourceResponse {
-  contents: ResourceContent[];
+  _meta?: {
+    progressToken?: string | number;
+  };
+  contents: Array<{
+    uri: string;
+    mimeType: string;
+    text: string;
+  }>;
 }
 
 export interface ToolResponse {
-  content: ToolContent;
+  _meta?: {
+    progressToken?: string | number;
+  };
+  content: {
+    mimeType: string;
+    text: string;
+  };
 } 

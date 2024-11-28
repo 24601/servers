@@ -1,6 +1,6 @@
-# mem0 MCP Server
+# jira MCP Server
 
-mem0 memory server
+Interact with the JIRA Cloud API
 
 This is a TypeScript-based MCP server that implements a simple notes system. It demonstrates core MCP concepts by providing:
 
@@ -52,8 +52,8 @@ On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
 ```json
 {
   "mcpServers": {
-    "mem0": {
-      "command": "/path/to/mem0/build/index.js"
+    "jira": {
+      "command": "/path/to/jira/build/index.js"
     }
   }
 }

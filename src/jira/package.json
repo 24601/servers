@@ -1,0 +1,20 @@
+{
+  "name": "@modelcontextprotocol/server-jira",
+  "version": "1.0.0",
+  "description": "MCP server for Jira Cloud",
+  "type": "module",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "start": "node build/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.0",
+    "jira.js": "^2.21.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "typescript": "^5.0.0"
+  }
+}
